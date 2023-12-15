@@ -4,6 +4,10 @@ import { Link } from "react-router-dom";
 import { PostStats } from "@/components/shared";
 import { useUserContext } from "@/context/AuthContext";
 
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+
 type GridPostListProps = {
   posts: Models.Document[];
   showUser?: boolean;
@@ -22,10 +26,11 @@ const GridPostList = ({
       {posts.map((post) => (
         <li key={post.$id} className="relative min-w-80 h-80">
           <Link to={`/posts/${post.$id}`} className="grid-post_link">
-            <img
-              src={post.imageUrl}
-              alt="post"
+            <LazyLoadImage
               className="h-full w-full object-cover"
+              effect="blur"
+              src={post.imageUrl}
+              width="100%"
             />
           </Link>
 

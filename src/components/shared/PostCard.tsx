@@ -5,6 +5,11 @@ import { PostStats } from "@/components/shared";
 import { multiFormatDateString } from "@/lib/utils";
 import { useUserContext } from "@/context/AuthContext";
 
+
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+
+
 type PostCardProps = {
   post: Models.Document;
 };
@@ -69,11 +74,12 @@ const PostCard = ({ post }: PostCardProps) => {
           </ul>
         </div>
 
-        <img
-          src={post.imageUrl || "/assets/icons/profile-placeholder.svg"}
-          alt="post image"
-          className="post-card_img"
-        />
+        <LazyLoadImage
+            className="post-card_img"
+            effect="blur"
+            src={post?.imageUrl}
+            width="100%"
+        />  
       </Link>
 
       <PostStats post={post} userId={user.id} />
