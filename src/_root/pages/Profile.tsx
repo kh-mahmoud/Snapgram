@@ -18,6 +18,8 @@ interface StabBlockProps {
   label: string;
 }
 
+
+
 const StatBlock = ({ value, label }: StabBlockProps) => (
   <div className="flex-center gap-2">
     <p className="small-semibold lg:body-bold text-primary-500">{value}</p>
@@ -38,6 +40,8 @@ const Profile = () => {
         <Loader />
       </div>
     );
+
+    console.log(currentUser)
 
   return (
     <div className="profile-container">
@@ -61,9 +65,10 @@ const Profile = () => {
             </div>
 
             <div className="flex gap-8 mt-10 items-center justify-center xl:justify-start flex-wrap z-20">
-              <StatBlock value={currentUser.posts.length} label="Posts" />
-              <StatBlock value={20} label="Followers" />
-              <StatBlock value={20} label="Following" />
+              <StatBlock value={currentUser.posts.length} label={`${currentUser.posts.length>1?"Posts":"Post"}`} />
+              <StatBlock value={currentUser.liked.length} label={`${currentUser.liked.length>1?'Likes':'Like'}`} />
+              <StatBlock value={currentUser.save.length} label={`${currentUser.save.length>1?'Saved':'Saved'}`} />
+
             </div>
 
             <p className="small-medium md:base-medium text-center xl:text-left mt-7 max-w-screen-sm">
