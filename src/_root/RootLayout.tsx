@@ -12,7 +12,7 @@ const RootLayout = () => {
 
   return (
     <div className="w-full md:flex h-screen">
-      {isAuthenticated ? (
+      {isAuthenticated &&(
         <>
           <Topbar />
           <LeftSidebar />
@@ -22,9 +22,7 @@ const RootLayout = () => {
           </section>
           <Bottombar />
         </>
-      ) : (
-        <Navigate to={'/sign-in'} />
-      )}
+      ) }
 
 
     </div>
