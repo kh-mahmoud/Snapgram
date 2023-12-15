@@ -4,7 +4,6 @@ import Topbar from "@/components/shared/Topbar";
 import Bottombar from "@/components/shared/Bottombar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import { useUserContext } from "@/context/AuthContext";
-import { Navigate } from "react-router-dom"
 
 const RootLayout = () => {
 
