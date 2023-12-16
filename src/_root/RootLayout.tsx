@@ -4,6 +4,7 @@ import Topbar from "@/components/shared/Topbar";
 import Bottombar from "@/components/shared/Bottombar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import { useUserContext } from "@/context/AuthContext";
+import { Navigate } from "react-router-dom"
 
 const RootLayout = () => {
 
@@ -11,7 +12,7 @@ const RootLayout = () => {
 
   return (
     <div className="w-full md:flex h-screen">
-      {isAuthenticated &&(
+      {isAuthenticated ? (
         <>
           <Topbar />
           <LeftSidebar />
@@ -21,7 +22,9 @@ const RootLayout = () => {
           </section>
           <Bottombar />
         </>
-      ) }
+      ) : (
+        <Navigate to={'/sign-in'} />
+      )}
 
 
     </div>
